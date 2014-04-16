@@ -46,15 +46,16 @@ public class MainActivity extends Activity {
 	private Button.OnClickListener left = new Button.OnClickListener() {
 		@Override
 		public void onClick(View V) {
-				for(int i=0;i<4;i++) 
+				for(int i=0;i<4;i++) {
 					for(int j=0;j<4;j++) {
 						count=4-j;
 						if(tv[i][j].getText().toString().equals("")) {
-							for(int k=1;k<count;k++)
+							for(int k=1;k<count;k++) {
 								if(!tv[i][j+k].getText().toString().equals("")) {
 									count = k;
 									break;
 								}
+							}
 							tv[i][j].setText(tv[i][j+count].getText().toString());
 							tv[i][j+count].setText("");
 						}
@@ -65,7 +66,29 @@ public class MainActivity extends Activity {
 						else {
 						
 						}*/
+					}
 				}
+		}
+	};
+	
+	private Button.OnClickListener right = new Button.OnClickListener() {
+		@Override
+		public void onClick(View V) {
+
+		}
+	};
+	
+	private Button.OnClickListener down = new Button.OnClickListener() {
+		@Override
+		public void onClick(View V) {
+
+		}
+	};
+	
+	private Button.OnClickListener up = new Button.OnClickListener() {
+		@Override
+		public void onClick(View V) {
+
 		}
 	};
 	
@@ -93,6 +116,9 @@ public class MainActivity extends Activity {
 		btn4 = (Button)findViewById(R.id.button4);
 		btn5 = (Button)findViewById(R.id.button5);
 		btn1.setOnClickListener(left);
+		btn2.setOnClickListener(down);
+		btn3.setOnClickListener(right);
+		btn4.setOnClickListener(up);
 		btn5.setOnClickListener(newG);
 		tv[0][0] = (TextView)findViewById(R.id.textView2);
 		tv[0][1] = (TextView)findViewById(R.id.textView3);
