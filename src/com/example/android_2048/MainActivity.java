@@ -1,5 +1,6 @@
 package com.example.android_2048;
 
+import android.R.integer;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,12 +16,16 @@ public class MainActivity extends Activity {
 	private Button btn5;
 	private static TextView[][] tv = new TextView[4][4];
 	static int  x, y;
+	int count=0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		findViewById();
+	/*	for(int i=0;i<4;i++)
+			for(int j=0;j<4;j++) 
+				tv[i][j].setText("1");*/
 		newGame();
 	}
 
@@ -41,12 +46,17 @@ public class MainActivity extends Activity {
 	private Button.OnClickListener left = new Button.OnClickListener() {
 		@Override
 		public void onClick(View V) {
-			for(int k=0;k<4;k++)
 				for(int i=0;i<4;i++) 
-					for(int j=1;j<4;j++) {
-						if(tv[i][j-1].getText().toString().equals("") && !tv[i][j].getText().toString().equals("")) {
-							tv[i][j-1].setText(tv[i][j].getText().toString());
-							tv[i][j].setText("");
+					for(int j=0;j<4;j++) {
+						count=4-j;
+						if(tv[i][j].getText().toString().equals("")) {
+							for(int k=1;k<count;k++)
+								if(!tv[i][j+k].getText().toString().equals("")) {
+									count = k;
+									break;
+								}
+							tv[i][j].setText(tv[i][j+count].getText().toString());
+							tv[i][j+count].setText("");
 						}
 				/*		else if(tv[i][j-1].getText().toString().equals(tv[i][j].getText().toString())) {
 						tv[i][j-1].setText(Integer.parseInt(tv[i][j-1].getText().toString())*2);
