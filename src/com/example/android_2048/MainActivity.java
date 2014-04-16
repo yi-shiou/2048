@@ -137,7 +137,7 @@ public class MainActivity extends Activity {
 		tv[3][2] = (TextView)findViewById(R.id.textView16);
 		tv[3][3] = (TextView)findViewById(R.id.textView17);
 	}
-
+//hollow
 }
 
 
